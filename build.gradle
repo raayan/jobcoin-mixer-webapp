@@ -14,17 +14,10 @@ apply plugin: 'idea'
 // For node
 apply plugin: 'com.moowork.node'
 
-
-//application {
-//}
-
 repositories {
     mavenCentral()
 }
 
-
-
-// For node
 node {
     download = true
     // Set the work directory for node
@@ -52,7 +45,7 @@ task appBuild(type: NpmTask) {
 }
 
 task appCopy(type: Copy) {
-    from 'src/main/webapp/build'
-    into 'src/main/resources/static/.'
+//    from 'src/main/webapp/build'
+//    into 'src/main/resources/static/.'
 }
 
