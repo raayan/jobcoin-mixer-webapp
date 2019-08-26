@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.moowork.gradle:gradle-node-plugin:1.3.1"
+    }
+}
+
+apply plugin: 'idea'
+// For node
+apply plugin: 'com.moowork.node'
+
+
+//application {
+//}
+
+repositories {
+    mavenCentral()
+}
+
+
+
+// For node
+node {
+    download = true
+    // Set the work directory for node
+    workDir = file("${project.projectDir}/nodejs")
+    // Set the work directory for npm
+    npmWorkDir = file("${project.projectDir}/npm")
+}
+
+task appStart(type: NpmTask) {
+    description = "npm start"
+    workingDir = file("${project.projectDir}")
+    args = ["start"]
+}
+
+task appInstall(type: NpmTask) {
+    description = "npm install from from package.json"
+    workingDir = file("${project.projectDir}")
+    args = ["install"]
+}
+
+task appBuild(type: NpmTask) {
+    description = "builds production version of the webapp"
+    workingDir = file("${project.projectDir}")
+    args = ["run", "build"]
+}
+
+task appCopy(type: Copy) {
+    from 'src/main/webapp/build'
+    into 'src/main/resources/static/.'
+}
+
