@@ -4,8 +4,6 @@
 /nodejs
 /npm
 /.gradle
-
-# dependencies
 /node_modules
 /.pnp
 .pnp.js
