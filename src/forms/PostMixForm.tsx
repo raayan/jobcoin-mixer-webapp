@@ -237,7 +237,7 @@ class PostMixForm extends React.Component<Props, State> {
                         <Steps.Step title="Submit" description="Ask the mixer mix your funds"/>
                         <Steps.Step title="Move Funds" description={
                             (this.state.step === 0 && "Transfer from your wallet to the generated deposit address") ||
-                            (this.state.step === 1 && (this.state.stepStatus !== "error") ? (
+                            (this.state.step === 1 && ((this.state.stepStatus !== "error") ? (
                                 (<AutoTransferInput
                                     amount={this.state.mixAmount}
                                     depositAddress={this.state.mixResponse!.depositAddress}
@@ -247,7 +247,7 @@ class PostMixForm extends React.Component<Props, State> {
                                     fundsTransferred={this.fundTransferred}
                                     deadline={this.state.deadline}
                                 />)
-                            ) : ("Mixer did not receive funds, mix abandoned")) ||
+                            ) : ("Mixer did not receive funds, mix abandoned"))) ||
                             (this.state.step === 2 && `Funds transferred to ${this.state.mixResponse!.depositAddress}`)
                         }
                         />
@@ -258,8 +258,7 @@ class PostMixForm extends React.Component<Props, State> {
                 )}
                 {(this.state) && (this.state.step === 2 || this.state.stepStatus === "error") && (
                     <Button type={"primary"} size={"small"} onClick={this.restart}>
-                        Restart
-                        <Icon type={"redo"}/>
+                        Restart <Icon type={"redo"}/>
                     </Button>
                 )}
             </Fragment>

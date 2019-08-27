@@ -45,7 +45,7 @@ task appBuild(type: NpmTask) {
 }
 
 task appCopy(type: Copy) {
-//    from 'src/main/webapp/build'
-//    into 'src/main/resources/static/.'
+    from './build'
+    into '../jobcoin-mixer/src/main/resources/static'
 }
 
